@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKPD Online: Keseimbangan Benda Tegar (PhET Balancing Act)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            .no-print { display: none; }
+            input, textarea { border: none; border-bottom: 1px solid #000; background: transparent; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-6 md:p-10 border border-slate-200">
+        
+        <!-- Header LKPD -->
+        <div class="text-center border-b-2 border-slate-300 pb-6 mb-6">
+            <span class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Lembar Kerja Peserta Didik Elektronik (E-LKPD)</span>
+            <h1 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">KESEIMBANGAN BENDA TEGAR</h1>
+            <p class="text-slate-600 text-sm mt-1">Simulasi PhET Interactive Simulations: Balancing Act</p>
+        </div>
+
+        <!-- Identitas Siswa -->
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Kelompok / Anggota:</label>
+                <textarea rows="3" class="w-full text-sm border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="1. &#10;2. &#10;3. &#10;4. "></textarea>
+            </div>
+            <div class="flex flex-col justify-between">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Kelas / Mata Pelajaran:</label>
+                    <input type="text" class="w-full text-sm border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-indigo-500 focus:outline-none mb-3" placeholder="Contoh: XII MIPA / Fisika">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Hari / Tanggal:</label>
+                    <input type="date" class="w-full text-sm border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tujuan & Petunjuk -->
+        <div class="mb-8 space-y-4">
+            <div class="bg-indigo-50/50 border-l-4 border-indigo-600 p-4 rounded-r-xl">
+                <h3 class="font-bold text-indigo-900 text-sm uppercase">Tujuan Belajar</h3>
+                <p class="text-sm text-indigo-800 mt-1">Peserta didik dapat menerapkan konsep kesetimbangan benda tegar dan momen gaya menggunakan simulasi virtual jungkat-jungkit (*Balancing Act*).</p>
+            </div>
+
+            <div class="bg-amber-50/50 border-l-4 border-amber-500 p-4 rounded-r-xl">
+                <h3 class="font-bold text-amber-900 text-sm uppercase">Langkah Kerja & Simulasi</h3>
+                <ol class="list-decimal list-inside text-sm text-amber-800 space-y-1 mt-1">
+                    <li>Buka simulasi PhET di browser melalui tautan: <a href="https://phet.colorado.edu/sims/html/balancing-act/latest/balancing-act_en.html" target="_blank" class="text-indigo-600 underline font-medium">PhET Balancing Act</a> dan pilih menu <b>Balance Lab (Tengah)</b>.</li>
+                    <li>Aktifkan opsi <b>Marks</b> (Tanda) dan <b>Level</b> untuk mempermudah pembacaan posisi dan status keseimbangan.</li>
+                    <li>Gunakan massa bata, manusia, maupun <i>Mystery Objects</i> sesuai petunjuk percobaan di bawah ini. Gunakan nilai percepatan gravitasi $g = 10\text{ m/s}^2$.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- BAGIAN I: MENENTUKAN BERAT MYSTERY OBJECTS (A - H) -->
+        <div class="mb-8">
+            <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4">A. Penentuan Berat Mystery Objects (A – H)</h2>
+            <p class="text-xs text-slate-600 mb-3">Tentukan berat masing-masing benda misterius dengan menyeimbangkannya menggunakan massa batu bata atau manusia yang diketahui beratnya pada simulasi.</p>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse border border-slate-300 text-sm">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700">
+                            <th class="border border-slate-300 p-2 text-center w-16">No</th>
+                            <th class="border border-slate-300 p-2">Mystery Objects</th>
+                            <th class="border border-slate-300 p-2">Berat Terukur ($w$ dalam Newton / Massa dalam kg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loop A-H -->
+                        <script>
+                            const objects = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+                            objects.forEach((obj, idx) => {
+                                document.write(`
+                                    <tr>
+                                        <td class="border border-slate-300 p-2 text-center font-medium">${idx + 1}</td>
+                                        <td class="border border-slate-300 p-2 font-bold text-indigo-700">Benda ${obj}</td>
+                                        <td class="border border-slate-300 p-2"><input type="text" class="w-full border-0 focus:ring-0 p-1 text-sm bg-slate-50/50" placeholder="Masukkan hasil penimbangan..."></td>
+                                    </tr>
+                                `);
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- BAGIAN II: TABEL PERCOBAAN MOMEN GAYA & KESEIMBANGAN -->
+        <div class="mb-8">
+            <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-2 mb-4">B. Tabulasi Data Percobaan Kesetimbangan Jungkat-Jungkit</h2>
+            <p class="text-xs text-slate-600 mb-3">Lakukan 4 variasi penempatan benda di sisi kanan dan kiri penumpu hingga seimbang, lalu catat besaran massa dan lengannya.</p>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse border border-slate-300 text-xs">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 text-center">
+                            <th rowspan="2" class="border border-slate-300 p-2 w-12">No</th>
+                            <th colspan="2" class="border border-slate-300 p-2">Benda Sisi Kanan</th>
+                            <th colspan="2" class="border border-slate-300 p-2">Benda Sisi Kiri</th>
+                            <th rowspan="2" class="border border-slate-300 p-2">Analisis Torsi / Keterangan</th>
+                        </tr>
+                        <tr class="bg-slate-50 text-slate-700 text-center">
+                            <th class="border border-slate-300 p-2">Massa ($m_1$ kg)</th>
+                            <th class="border border-slate-300 p-2">Letak ($r_1$ m)</th>
+                            <th class="border border-slate-300 p-2">Massa ($m_2$ kg)</th>
+                            <th class="border border-slate-300 p-2">Letak ($r_2$ m)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <script>
+                            for(let i=1; i<=4; i++) {
+                                document.write(`
+                                    <tr>
+                                        <td class="border border-slate-300 p-2 text-center font-medium">${i}</td>
+                                        <td class="border border-slate-300 p-2"><input type="text" class="w-full border-0 p-1 text-xs" placeholder="m1..."></td>
+                                        <td class="border border-slate-300 p-2"><input type="text" class="w-full border-0 p-1 text-xs" placeholder="r1..."></td>
+                                        <td class="border border-slate-300 p-2"><input type="text" class="w-full border-0 p-1 text-xs" placeholder="m2..."></td>
+                                        <td class="border border-slate-300 p-2"><input type="text" class="w-full border-0 p-1 text-xs" placeholder="r2..."></td>
+                                        <td class="border border-slate-300 p-2"><input type="text" class="w-full border-0 p-1 text-xs" placeholder="W1.r1 = W2.r2"></td>
+                                    </tr>
+                                `);
+                            }
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- BAGIAN III: TUGAS / PERTANYAAN DISKUSI -->
+        <div class="mb-8 space-y-6">
+            <h2 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-2">C. Tugas & Pertanyaan Diskusi</h2>
+            
+            <div>
+                <label class="block text-sm font-semibold text-slate-800 mb-1">1. Mengapa massa dan jarak titik tangkap terhadap poros (penumpu) sangat memengaruhi keseimbangan benda tegar?</label>
+                <textarea rows="3" class="w-full text-sm border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="Tuliskan analisis jawaban Anda di sini..."></textarea>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-slate-800 mb-1">2. Berdasarkan hasil percobaan di atas, berapakah nilai resultan momen gaya ($\sum \tau$) saat jungkat-jungkit dalam keadaan seimbang? Jelaskan alasannya!</label>
+                <textarea rows="3" class="w-full text-sm border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="Tuliskan analisis jawaban Anda di sini..."></textarea>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-slate-800 mb-1">3. Jika lengan gaya semakin panjang di salah satu sisi, agar kesetimbangan tetap terjaga, apa yang harus dilakukan terhadap besar gaya (berat beban) di sisi seberangnya?</label>
+                <textarea rows="3" class="w-full text-sm border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="Tuliskan analisis jawaban Anda di sini..."></textarea>
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-slate-800 mb-1">4. Kesimpulan apakah yang dapat Anda tarik dari seluruh rangkaian percobaan simulasi kesetimbangan ini?</label>
+                <textarea rows="4" class="w-full text-sm border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="Tuliskan kesimpulan percobaan..."></textarea>
+            </div>
+        </div>
+
+        <!-- Tombol Aksi (Cetak / Simpan PDF) -->
+        <div class="no-print text-center pt-4 border-t border-slate-200">
+            <button onclick="window.print()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition duration-200 flex items-center justify-center mx-auto gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                </svg>
+                Cetak / Simpan Laporan (PDF)
+            </button>
+            <p class="text-xs text-slate-500 mt-2">Gunakan opsi "Save as PDF" pada dialog cetak browser Anda untuk menyimpan hasil pengisian.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
